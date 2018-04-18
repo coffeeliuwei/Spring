@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+    <bean id="javaBean" class="com.coffee.spring.s02.spingioc.JavaBean">
+       <property name="userName">
+           <value>刘伟</value>
+       </property>
+       <property name="password">
+           <value>111111</value>
+       </property>
+    </bean>
+</beans>

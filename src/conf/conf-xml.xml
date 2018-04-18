@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd  
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<aop:aspectj-autoproxy />
+	<bean id="stu" class="com.coffee.spring.s06.aop.xml.Student">
+		<constructor-arg index="0">
+			<value>liuwei</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>20</value>
+		</constructor-arg>
+	</bean>
+	<bean id="interceptor" class="com.coffee.spring.s06.aop.xml.StuInterceptor">
+
+	</bean>
+
+	<aop:config>
+		<aop:aspect id="stuInterceptor" ref="interceptor">
+			<aop:before
+				pointcut="execution(* com.coffee.spring.s06.aop.xml.Student.*(..))"
+				method="printBeforeAdvice" />
+			<aop:after-returning
+				pointcut="execution(* com.coffee.spring.s06.aop.xml.Student.*(..))"
+				returning="returnValue" method="log" />
+			<aop:after pointcut="execution(* com.coffee.spring.s06.aop.xml.Student.*(..))"
+				method="finallyAdvice" />
+			<aop:around
+				pointcut="execution(* com.coffee.spring.s06.aop.xml.Student.*(..)) and args(name)"
+				method="printAroundAdvice" />
+		</aop:aspect>
+	</aop:config>
+
+
+</beans>  
+

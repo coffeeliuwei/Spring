@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="helloWorld" class="com.coffee.spring.s01.HelloWorld"></bean>
+	<bean id="helloChina" class="com.coffee.spring.s01.HelloChina"></bean>
+	<bean name="person" class="com.coffee.spring.s01.Person">
+		<property name="helloMessage" ref="helloChina" />
+	</bean>
+	<bean name="person1" class="com.coffee.spring.s01.Person">
+		<property name="helloMessage" ref="helloWorld" />
+	</bean>
+	<bean name="person2" id="person3" class="com.coffee.spring.s01.Person">
+		<property name="helloMessage" ref="helloWorld" />
+	</bean>
+	<bean name="person4;person5;person6"  class="com.coffee.spring.s01.Person">
+		<property name="helloMessage" ref="helloChina" />
+	</bean>
+</beans>
